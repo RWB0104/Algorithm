@@ -1,0 +1,8 @@
+## Git Ignore
+##
+## 추적하지 않기를 원하는 파일의 확장자, 폴더 경로를 입력하세요.
+## 이미 Commit된 파일이나 경로는 .gitignore에 입력해도 계속 추적합니다.
+## 이 경우, 해당 파일을 지우거나 옮긴 뒤 Commit해서 Push한 뒤, 다시 원복해서 Commit & Push를 진행하면 됩니다.
+
+# Directory
+박성진/bin/
