@@ -1,4 +1,4 @@
-package all.a1000;
+package beakjoon.all.a1000;
 
 import java.util.Scanner;
 

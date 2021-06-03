@@ -13,8 +13,8 @@ software and other kinds of works.
   The licenses for most software and other practical works are designed
 to take away your freedom to share and change the works.  By contrast,
 the GNU General Public License is intended to guarantee your freedom to
-share and change all versions of a program--to make sure it remains free
-software for all its users.  We, the Free Software Foundation, use the
+share and change beakjoon.all versions of a program--to make sure it remains free
+software for beakjoon.all its users.  We, the Free Software Foundation, use the
 GNU General Public License for most of our software; it applies also to
 any other work released this way by its authors.  You can apply it to
 your programs, too.
@@ -81,7 +81,7 @@ works, such as semiconductor masks.
 License.  Each licensee is addressed as "you".  "Licensees" and
 "recipients" may be individuals or organizations.
 
-  To "modify" a work means to copy from or adapt all or part of the work
+  To "modify" a work means to copy from or adapt beakjoon.all or part of the work
 in a fashion requiring copyright permission, other than the making of an
 exact copy.  The resulting work is called a "modified version" of the
 earlier work or a work "based on" the earlier work.
@@ -131,7 +131,7 @@ implementation is available to the public in source code form.  A
 (if any) on which the executable work runs, or a compiler used to
 produce the work, or an object code interpreter used to run it.
 
-  The "Corresponding Source" for a work in object code form means all
+  The "Corresponding Source" for a work in object code form means beakjoon.all
 the source code needed to generate, install, and (for an executable
 work) run the object code and to modify the work, including scripts to
 control those activities.  However, it does not include the work's
@@ -166,7 +166,7 @@ convey, without conditions so long as your license otherwise remains
 in force.  You may convey covered works to others for the sole purpose
 of having them make modifications exclusively for you, or provide you
 with facilities for running those works, provided that you comply with
-the terms of this License in conveying all material for which you do
+the terms of this License in conveying beakjoon.all material for which you do
 not control copyright.  Those thus making or running the covered works
 for you must do so exclusively on your behalf, under your direction
 and control, on terms that prohibit them from making any copies of
@@ -197,9 +197,9 @@ technological measures.
   You may convey verbatim copies of the Program's source code as you
 receive it, in any medium, provided that you conspicuously and
 appropriately publish on each copy an appropriate copyright notice;
-keep intact all notices stating that this License and any
+keep intact beakjoon.all notices stating that this License and any
 non-permissive terms added in accord with section 7 apply to the code;
-keep intact all notices of the absence of any warranty; and give all
+keep intact beakjoon.all notices of the absence of any warranty; and give beakjoon.all
 recipients a copy of this License along with the Program.
 
   You may charge any price or no price for each copy that you convey,
@@ -209,7 +209,7 @@ and you may offer support or warranty protection for a fee.
 
   You may convey a work based on the Program, or the modifications to
 produce it from the Program, in the form of source code under the
-terms of section 4, provided that you also meet all of these conditions:
+terms of section 4, provided that you also meet beakjoon.all of these conditions:
 
     a) The work must carry prominent notices stating that you modified
     it, and giving a relevant date.
@@ -217,12 +217,12 @@ terms of section 4, provided that you also meet all of these conditions:
     b) The work must carry prominent notices stating that it is
     released under this License and any conditions added under section
     7.  This requirement modifies the requirement in section 4 to
-    "keep intact all notices".
+    "keep intact beakjoon.all notices".
 
     c) You must license the entire work, as a whole, under this
     License to anyone who comes into possession of a copy.  This
     License will therefore apply, along with any applicable section 7
-    additional terms, to the whole of the work, and all its parts,
+    additional terms, to the whole of the work, and beakjoon.all its parts,
     regardless of how they are packaged.  This License gives no
     permission to license the work in any other way, but it does not
     invalidate such permission if you have separately received it.
@@ -259,7 +259,7 @@ in one of these ways:
     written offer, valid for at least three years and valid for as
     long as you offer spare parts or customer support for that product
     model, to give anyone who possesses the object code either (1) a
-    copy of the Corresponding Source for all the software in the
+    copy of the Corresponding Source for beakjoon.all the software in the
     product that is covered by this License, on a durable physical
     medium customarily used for software interchange, for a price no
     more than your reasonable cost of physically performing this
@@ -412,7 +412,7 @@ modify it is void, and will automatically terminate your rights under
 this License (including any patent licenses granted under the third
 paragraph of section 11).
 
-  However, if you cease all violation of this License, then your
+  However, if you cease beakjoon.all violation of this License, then your
 license from a particular copyright holder is reinstated (a)
 provisionally, unless and until the copyright holder explicitly and
 finally terminates your license, and (b) permanently, if the copyright
@@ -451,7 +451,7 @@ propagate that work, subject to this License.  You are not responsible
 for enforcing compliance by third parties with this License.
 
   An "entity transaction" is a transaction transferring control of an
-organization, or substantially all assets of one, or subdividing an
+organization, or substantially beakjoon.all assets of one, or subdividing an
 organization, or merging organizations.  If propagation of a covered
 work results from an entity transaction, each party to that
 transaction who receives a copy of the work also receives whatever
@@ -474,7 +474,7 @@ sale, or importing the Program or any portion of it.
 License of the Program or a work on which the Program is based.  The
 work thus licensed is called the contributor's "contributor version".
 
-  A contributor's "essential patent claims" are all patent claims
+  A contributor's "essential patent claims" are beakjoon.all patent claims
 owned or controlled by the contributor, whether already acquired or
 hereafter acquired, that would be infringed by some manner, permitted
 by this License, of making, using, or selling its contributor version,
@@ -515,7 +515,7 @@ arrangement, you convey, or propagate by procuring conveyance of, a
 covered work, and grant a patent license to some of the parties
 receiving the covered work authorizing them to use, propagate, modify
 or convey a specific copy of the covered work, then the patent license
-you grant is automatically extended to all recipients of the covered
+you grant is automatically extended to beakjoon.all recipients of the covered
 work and works based on it.
 
   A patent license is "discriminatory" if it does not include within
@@ -544,7 +544,7 @@ otherwise) that contradict the conditions of this License, they do not
 excuse you from the conditions of this License.  If you cannot convey a
 covered work so as to satisfy simultaneously your obligations under this
 License and any other pertinent obligations, then as a consequence you may
-not convey it at all.  For example, if you agree to terms that obligate you
+not convey it at beakjoon.all.  For example, if you agree to terms that obligate you
 to collect a royalty for further conveying from those to whom you convey
 the Program, the only way you could satisfy both those terms and this
 License would be to refrain entirely from conveying the Program.
@@ -614,7 +614,7 @@ SUCH DAMAGES.
   If the disclaimer of warranty and limitation of liability provided
 above cannot be given local legal effect according to their terms,
 reviewing courts shall apply local law that most closely approximates
-an absolute waiver of all civil liability in connection with the
+an absolute waiver of beakjoon.all civil liability in connection with the
 Program, unless a warranty or assumption of liability accompanies a
 copy of the Program in return for a fee.
 

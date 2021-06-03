@@ -1,4 +1,4 @@
-package all.a1005;
+package beakjoon.all.a1005;
 
 import java.util.LinkedList;
 import java.util.Queue;

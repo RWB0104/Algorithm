@@ -1,4 +1,4 @@
-package all.a1002;
+package beakjoon.all.a1002;
 
 import java.util.Scanner;
 
@@ -37,21 +37,21 @@ public class Main
 	
 	/**
 	 * 접점 갯수 반환 함수
-	 * 
+	 * <p>
 	 * case 1 - 두 원이 정확히 겹칠 경우 (-1)
 	 * case 2 - 두 원이 서로 겹치면서 인접하지 않는 경우 (0)
 	 * case 3 - 두 원이 서로 겹치지 않으면서 인접하지 않는 경우 (0)
 	 * case 4 - 두 원이 서로 겹치면서 인접하는 경우 (1)
 	 * case 5 - 두 원이 서로 겹치지 않으면서 인접하는 경우 (1)
 	 * case 6 - 두 원이 서로 겹치면서 인접하지 않는 경우 (2)
-	 * 
+	 *
 	 * @param x1: [int] A의 x좌표
 	 * @param y1: [int] A의 y좌표
 	 * @param r1: [int] A와 C 사이의 거리
 	 * @param x2: [int] B의 x좌표
 	 * @param y2: [int] B의 y좌표
 	 * @param r2: [int] B와 C 사이의 거리
-	 * 
+	 *
 	 * @return [int] 접점 갯수
 	 */
 	private static int calcPoints(int x1, int y1, int r1, int x2, int y2, int r2)
