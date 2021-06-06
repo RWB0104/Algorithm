@@ -6,6 +6,7 @@ import java.util.Scanner;
  * 백준 전체 1002 문제 알고리즘 클래스
  *
  * @author RWB
+ * @see <a href="https://rwb0104.github.io/posts/2021/05/21/A1002/">1002 풀이</a>
  * @since 2021.04.21 Wed 21:56:10
  */
 public class Main

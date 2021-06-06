@@ -6,6 +6,7 @@ import java.util.Scanner;
  * 백준 전체 1000 문제 알고리즘 클래스
  *
  * @author RWB
+ * @see <a href="https://rwb0104.github.io/posts/2021/05/21/A1000/">1000 풀이</a>
  * @since 2021.04.21 Wed 21:38:17
  */
 public class Main
