@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
  */
 public class Main
 {
+	private static int[][] P;
+	private static int[][] V;
+	
 	/**
 	 * 메인 함수
 	 *
@@ -30,7 +33,7 @@ public class Main
 		{
 			int N = Integer.parseInt(reader.readLine());
 			
-			int[][] P = new int[N][2];
+			P = new int[N][2];
 			
 			for (int j = 0; j < N; j++)
 			{
@@ -38,8 +41,6 @@ public class Main
 				
 				P[j][0] = Integer.parseInt(temp[0]);
 				P[j][1] = Integer.parseInt(temp[1]);
-				
-				System.out.println(P[j][0] + " " + P[j][1]);
 			}
 		}
 		
@@ -48,6 +49,6 @@ public class Main
 	
 	private static void solve()
 	{
-		
+	
 	}
 }
