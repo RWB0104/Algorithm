@@ -8,13 +8,16 @@ import java.io.InputStreamReader;
  * 백준 전체 1007 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/02/A1006/">1007 풀이</a>
- * @since 2021.06.06 Sun 22:44:45
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/02/A1007/">1007 풀이</a>
+ * @since 2021.06.09 Tue 00:50:26
  */
 public class Main
 {
+	private static double result;
+	
+	private static boolean[] isChecked;
+	
 	private static int[][] P;
-	private static int[][] V;
 	
 	/**
 	 * 메인 함수
@@ -27,11 +30,17 @@ public class Main
 	{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
+		// 케이스 수
 		int T = Integer.parseInt(reader.readLine());
 		
 		for (int i = 0; i < T; i++)
 		{
+			// 점의 갯수
 			int N = Integer.parseInt(reader.readLine());
+			
+			result = Double.MAX_VALUE;
+			
+			isChecked = new boolean[N];
 			
 			P = new int[N][2];
 			
@@ -42,13 +51,70 @@ public class Main
 				P[j][0] = Integer.parseInt(temp[0]);
 				P[j][1] = Integer.parseInt(temp[1]);
 			}
+			
+			combination(0, N / 2);
+			
+			System.out.println(result);
 		}
 		
 		reader.close();
 	}
 	
-	private static void solve()
+	/**
+	 * 조합 함수
+	 *
+	 * @param index: 인덱스
+	 * @param count: 조합할 원소 갯수
+	 */
+	private static void combination(int index, int count)
 	{
+		// 조합할 원소 갯수가 더 이상 없을 경우
+		if (count == 0)
+		{
+			result = Math.min(result, getVector());
+		}
+		
+		// 조합할 원소 갯수가 아직 남아있을 경우
+		else
+		{
+			for (int i = index; i < P.length; i++)
+			{
+				isChecked[i] = true;
+				
+				combination(i + 1, count - 1);
+				
+				isChecked[i] = false;
+			}
+		}
+	}
 	
+	/**
+	 * 벡터 계산 함수
+	 *
+	 * @return {double} 벡터 크기
+	 */
+	private static double getVector()
+	{
+		int x = 0;
+		int y = 0;
+		
+		for (int i = 0; i < P.length; i++)
+		{
+			// 양수로 선택된 점일 경우
+			if (isChecked[i])
+			{
+				x += P[i][0];
+				y += P[i][1];
+			}
+			
+			// 음수로 선택된 점일 경우
+			else
+			{
+				x -= P[i][0];
+				y -= P[i][1];
+			}
+		}
+		
+		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
 }
