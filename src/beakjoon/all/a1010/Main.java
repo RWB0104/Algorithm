@@ -43,18 +43,29 @@ public class Main
 		reader.close();
 	}
 	
+	/**
+	 * 조합 결과 반환 함수
+	 *
+	 * @param n: 원소 갯수
+	 * @param r: 조합 갯수
+	 *
+	 * @return {int} 조합
+	 */
 	private static int combination(int n, int r)
 	{
+		// 이미 계산된 값일 경우
 		if (dp[n][r] > 0)
 		{
 			return dp[n][r];
 		}
 		
-		if (n == r || r == 0)
+		// 원소의 갯수가 조합의 갯수와 동일하거나 0일 경우
+		else if (n == r || r == 0)
 		{
 			return dp[n][r] = 1;
 		}
 		
+		// 일반적인 경우
 		else
 		{
 			return dp[n][r] = combination(n - 1, r - 1) + combination(n - 1, r);
