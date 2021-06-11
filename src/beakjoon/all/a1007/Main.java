@@ -13,10 +13,13 @@ import java.io.InputStreamReader;
  */
 public class Main
 {
+	// 결과
 	private static double result;
 	
+	// 조합 선택 여부
 	private static boolean[] isChecked;
 	
+	// 점의 배열
 	private static int[][] P;
 	
 	/**
@@ -63,8 +66,8 @@ public class Main
 	/**
 	 * 조합 함수
 	 *
-	 * @param index: 인덱스
-	 * @param count: 조합할 원소 갯수
+	 * @param index: [int] 인덱스
+	 * @param count: [int] 조합할 원소 갯수
 	 */
 	private static void combination(int index, int count)
 	{
@@ -91,7 +94,7 @@ public class Main
 	/**
 	 * 벡터 계산 함수
 	 *
-	 * @return {double} 벡터 크기
+	 * @return [double] 벡터 크기
 	 */
 	private static double getVector()
 	{

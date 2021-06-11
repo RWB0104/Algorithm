@@ -5,15 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * 백준 전체 1009 문제 알고리즘 클래스
+ * 백준 전체 1010 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/09/A1009/">1010 풀이</a>
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/09/A1010/">1010 풀이</a>
  * @since 2021.06.09 Tue 14:14:09
  */
 public class Main
 {
-	private static int[][] dp;
+	// 다리 건설 경우의 수
+	private static final int[][] dp = new int[31][31];
 	
 	/**
 	 * 메인 함수
@@ -26,6 +27,7 @@ public class Main
 	{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
+		// 케이스 수
 		int T = Integer.parseInt(reader.readLine());
 		
 		for (int i = 0; i < T; i++)
@@ -34,8 +36,6 @@ public class Main
 			
 			int N = Integer.parseInt(temp[0]);
 			int M = Integer.parseInt(temp[1]);
-			
-			dp = new int[M + 1][N + 1];
 			
 			System.out.println(combination(M, N));
 		}
