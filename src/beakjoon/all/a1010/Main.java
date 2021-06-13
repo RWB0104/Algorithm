@@ -46,10 +46,10 @@ public class Main
 	/**
 	 * 조합 결과 반환 함수
 	 *
-	 * @param n: 원소 갯수
-	 * @param r: 조합 갯수
+	 * @param n: [int] 원소 갯수
+	 * @param r: [int] 조합 갯수
 	 *
-	 * @return {int} 조합
+	 * @return [int] 조합
 	 */
 	private static int combination(int n, int r)
 	{
