@@ -1,10 +1,6 @@
 package beakjoon.all.a1014;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.Arrays;
 
 /**
@@ -24,10 +20,12 @@ public class Main
 	// 교실 세로 길이
 	private static int M;
 	
-	private static boolean[][] canSit;
-	private static int broken;
-	
 	private static int[] nodes;
+	
+	private static int visitor = 0;
+	private static int[] visit;
+	
+	private static int[] matched;
 	
 	/**
 	 * 메인 함수
@@ -55,9 +53,9 @@ public class Main
 			
 			room = new int[N][M];
 			
-			canSit = new boolean[N][M];
+			boolean[][] canSit = new boolean[N][M];
 			
-			broken = 0;
+			int broken = 0;
 			
 			nodes = new int[N * M];
 			
@@ -117,7 +115,10 @@ public class Main
 				}
 			}
 			
-			System.out.println("-");
+			int result = match();
+			
+			writer.write(Integer.toString(N * M - result - broken));
+			writer.newLine();
 		}
 		
 		writer.flush();
@@ -129,17 +130,49 @@ public class Main
 	{
 		int size = 0;
 		
-		int[] visit = new int[N * M + 1];
+		visit = new int[N * M + 1];
+		matched = new int[N * M + 1];
 		
-		int[] leftMatch = new int[N * M + 1];
-		int[] rightMatch = new int[N * M + 1];
+		Arrays.fill(matched, -1);
 		
-		Arrays.fill(leftMatch, -1);
-		Arrays.fill(rightMatch, -1);
-		
-		for (int i = 0; i < room.length; i++)
+		for (int n = 0; n < N; n += 2)
 		{
-		
+			for (int m = 0; m < M; m++)
+			{
+				visitor++;
+				
+				size += dfs(room[n][m]);
+			}
 		}
+		
+		return size;
+	}
+	
+	private static int dfs(int num)
+	{
+		if (visit[num] == visitor)
+		{
+			return 0;
+		}
+		
+		visit[num] = visitor;
+		
+		System.out.println(num);
+		System.out.println(nodes[num]);
+		
+		for (int i = 0; i < N * M; i++)
+		{
+			if ((nodes[num] & (1 << (i + 1))) > 0)
+			{
+				if (matched[i] == -1 || dfs(matched[i]) == 1)
+				{
+					matched[i] = num;
+					
+					return 1;
+				}
+			}
+		}
+		
+		return 0;
 	}
 }
