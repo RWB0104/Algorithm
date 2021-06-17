@@ -1,6 +1,10 @@
 package beakjoon.all.a1014;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
 /**
@@ -12,19 +16,21 @@ import java.util.Arrays;
  */
 public class Main
 {
-	private static int[][] room;
-	
-	// 교실 가로 길이
+	// 교실 세로 길이 (y)
 	private static int N;
 	
-	// 교실 세로 길이
+	// 교실 가로 길이 (x)
 	private static int M;
 	
+	// 자리 번호
+	private static int[][] room;
+	
+	// 컨닝 가능한 자리
 	private static int[] nodes;
 	
-	private static int visitor = 0;
-	private static int[] visit;
+	private static int visitCount = 1;
 	
+	private static int[] visit;
 	private static int[] matched;
 	
 	/**
@@ -39,45 +45,46 @@ public class Main
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int[][] scope = { { -1, 1 }, { -1, 0 }, { -1, -1 }, { 1, 1 }, { 1, 0 }, { 1, -1 } };
+		// 현재 자리에서 컨닝이 가능한 자리의 위치 상대좌표
+		int[][] scopes = { { -1, 1 }, { -1, 0 }, { -1, -1 }, { 1, 1 }, { 1, 0 }, { 1, -1 } };
 		
 		// 케이스 수
-		int T = Integer.parseInt(reader.readLine());
+		int C = Integer.parseInt(reader.readLine());
 		
-		while (T-- > 0)
+		while (C-- > 0)
 		{
 			String[] temp = reader.readLine().split(" ");
 			
 			N = Integer.parseInt(temp[0]);
 			M = Integer.parseInt(temp[1]);
 			
-			room = new int[N][M];
-			
+			// 자리의 파손 여부
 			boolean[][] canSit = new boolean[N][M];
 			
+			// 자리의 번호
+			int numbering = 1;
+			
+			// 파손된 자리의 총 갯수
 			int broken = 0;
 			
+			room = new int[N][M];
 			nodes = new int[N * M];
-			
-			int numbering = 1;
 			
 			for (int n = 0; n < N; n++)
 			{
-				Arrays.fill(room[n], 0);
-				
 				temp = reader.readLine().split("");
 				
 				for (int m = 0; m < M; m++)
 				{
+					// 자리 번호 기록
 					room[n][m] = numbering++;
 					
-					// 자리가 온전할 경우
 					if (temp[m].equals("."))
 					{
+						// 파손 여부 기록
 						canSit[n][m] = true;
 					}
 					
-					// 자리가 파손된 경우
 					else
 					{
 						canSit[n][m] = false;
@@ -89,57 +96,58 @@ public class Main
 			
 			for (int n = 0; n < N; n++)
 			{
+				// 홀수 열만 대상으로 동작함
 				for (int m = 0; m < M; m += 2)
 				{
-					// 자리가 온전할 경우
 					if (canSit[n][m])
 					{
-						int num = 0;
+						int connected = 0;
 						
-						for (int i = 0; i < 6; i++)
+						for (int[] scope : scopes)
 						{
-							int nx = m + scope[i][0];
-							int ny = n + scope[i][1];
+							int no = n + scope[1];
+							int mo = m + scope[0];
 							
-							// x, y의 위치가 교실을 벗어나지 않으며, 자리가 파손된 경우
-							if (nx >= 0 && ny >= 0 && nx < M && ny < N && canSit[ny][nx])
+							if (no > -1 && mo > -1 && no < N && mo < M && canSit[no][mo])
 							{
-								num += 1 << room[ny][nx];
+								// 컨닝이 가능한 자리의 번호를 비트마스킹하여 더함
+								connected += (1 << room[no][mo]);
 							}
 						}
 						
-						int point = room[n][m] - 1;
+						int position = room[n][m];
 						
-						nodes[point] = num;
+						// 현재 자리에서 컨닝이 가능한 모든 자리의 번호를 비트마스킹으로 기록
+						nodes[position] = connected;
 					}
 				}
 			}
 			
-			int result = match();
+			int result = bipartite();
 			
-			writer.write(Integer.toString(N * M - result - broken));
+			writer.write(Integer.toString(N * M - broken - result));
 			writer.newLine();
+			writer.flush();
 		}
 		
-		writer.flush();
 		writer.close();
 		reader.close();
 	}
 	
-	private static int match()
+	private static int bipartite()
 	{
 		int size = 0;
 		
-		visit = new int[N * M + 1];
-		matched = new int[N * M + 1];
+		visit = new int[N * M];
+		matched = new int[N * M];
 		
 		Arrays.fill(matched, -1);
 		
-		for (int n = 0; n < N; n += 2)
+		for (int n = 0; n < N; n++)
 		{
-			for (int m = 0; m < M; m++)
+			for (int m = 0; m < M; m += 2)
 			{
-				visitor++;
+				visitCount++;
 				
 				size += dfs(room[n][m]);
 			}
@@ -150,25 +158,20 @@ public class Main
 	
 	private static int dfs(int num)
 	{
-		if (visit[num] == visitor)
+		if (visit[num] != visitCount)
 		{
-			return 0;
-		}
-		
-		visit[num] = visitor;
-		
-		System.out.println(num);
-		System.out.println(nodes[num]);
-		
-		for (int i = 0; i < N * M; i++)
-		{
-			if ((nodes[num] & (1 << (i + 1))) > 0)
+			visit[num] = visitCount;
+			
+			for (int i = 0; i < N * M; i++)
 			{
-				if (matched[i] == -1 || dfs(matched[i]) == 1)
+				if ((nodes[num] & (1 << i)) > 0)
 				{
-					matched[i] = num;
-					
-					return 1;
+					if (matched[i] == -1 || dfs(matched[i]) == 1)
+					{
+						matched[i] = num;
+						
+						return 1;
+					}
 				}
 			}
 		}
