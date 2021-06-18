@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 백준 전체 1014 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/13/A1014/">1014 풀이</a>
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/19/A1014/">1014 풀이</a>
  * @since 2021.06.13 Sun 04:34:19
  */
 public class Main
@@ -26,11 +26,15 @@ public class Main
 	private static int[][] room;
 	
 	// 컨닝 가능한 자리
-	private static int[] nodes;
+	private static boolean[][] nodes;
 	
-	private static int visitCount = 1;
+	// 방문 횟수
+	private static int visitCount;
 	
+	// 버텍스별 방문 횟수
 	private static int[] visit;
+	
+	// 버텍스 매칭 여부
 	private static int[] matched;
 	
 	/**
@@ -68,7 +72,9 @@ public class Main
 			int broken = 0;
 			
 			room = new int[N][M];
-			nodes = new int[N * M];
+			nodes = new boolean[N * M][N * M];
+			
+			visitCount = 1;
 			
 			for (int n = 0; n < N; n++)
 			{
@@ -79,16 +85,18 @@ public class Main
 					// 자리 번호 기록
 					room[n][m] = numbering++;
 					
+					// 앉을 수 있는 경우
 					if (temp[m].equals("."))
 					{
-						// 파손 여부 기록
 						canSit[n][m] = true;
 					}
 					
+					// 파손된 경우
 					else
 					{
 						canSit[n][m] = false;
 						
+						// 파손 갯수 1 추가
 						broken++;
 					}
 				}
@@ -99,26 +107,22 @@ public class Main
 				// 홀수 열만 대상으로 동작함
 				for (int m = 0; m < M; m += 2)
 				{
+					// 앉을 수 있는 좌석일 경우
 					if (canSit[n][m])
 					{
-						int connected = 0;
-						
 						for (int[] scope : scopes)
 						{
+							// 컨닝 가능성 있는 자리의 상대좌표
 							int no = n + scope[1];
 							int mo = m + scope[0];
 							
+							// 상대좌표가 교실을 벗어나지 않으면서, 앉을 수 있을 경우
 							if (no > -1 && mo > -1 && no < N && mo < M && canSit[no][mo])
 							{
-								// 컨닝이 가능한 자리의 번호를 비트마스킹하여 더함
-								connected += (1 << room[no][mo]);
+								// 노드 연결 표시
+								nodes[room[n][m] - 1][room[no][mo] - 1] = true;
 							}
 						}
-						
-						int position = room[n][m];
-						
-						// 현재 자리에서 컨닝이 가능한 모든 자리의 번호를 비트마스킹으로 기록
-						nodes[position] = connected;
 					}
 				}
 			}
@@ -134,11 +138,18 @@ public class Main
 		reader.close();
 	}
 	
+	/**
+	 * 이분 매칭 갯수 반환 함수
+	 *
+	 * @return [int] 이분 매칭 갯수
+	 */
 	private static int bipartite()
 	{
+		// 매칭 갯수
 		int size = 0;
 		
 		visit = new int[N * M];
+		
 		matched = new int[N * M];
 		
 		Arrays.fill(matched, -1);
@@ -149,23 +160,33 @@ public class Main
 			{
 				visitCount++;
 				
-				size += dfs(room[n][m]);
+				size += dfs(room[n][m] - 1);
 			}
 		}
 		
 		return size;
 	}
 	
+	/**
+	 * DFS 알고리즘 결과 반환 함수
+	 *
+	 * @param num: [int] 시작점
+	 *
+	 * @return [int] 매칭 갯수
+	 */
 	private static int dfs(int num)
 	{
+		// 같은 버텍스가 아닐 경우
 		if (visit[num] != visitCount)
 		{
 			visit[num] = visitCount;
 			
 			for (int i = 0; i < N * M; i++)
 			{
-				if ((nodes[num] & (1 << i)) > 0)
+				// num과 i 버텍스 사이에 노드가 존재할 경우
+				if (nodes[num][i])
 				{
+					// 아직 매칭되지 않았거나, 이미 i와 매칭된 버텍스부터 경로 탐색한 결과가 있을 경우
 					if (matched[i] == -1 || dfs(matched[i]) == 1)
 					{
 						matched[i] = num;
