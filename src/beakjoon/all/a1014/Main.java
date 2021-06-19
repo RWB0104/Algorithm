@@ -11,8 +11,8 @@ import java.util.Arrays;
  * 백준 전체 1014 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/19/A1014/">1014 풀이</a>
- * @since 2021.06.13 Sun 04:34:19
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/18/A1014/">1014 풀이</a>
+ * @since 2021.06.18 Fri 16:42:44
  */
 public class Main
 {
@@ -186,7 +186,7 @@ public class Main
 				// num과 i 버텍스 사이에 노드가 존재할 경우
 				if (nodes[num][i])
 				{
-					// 아직 매칭되지 않았거나, 이미 i와 매칭된 버텍스부터 경로 탐색한 결과가 있을 경우
+					// 아직 매칭되지 않았거나, 이미 i와 매칭된 버텍스가 다른 버텍스와 매칭할 수 있을 경우
 					if (matched[i] == -1 || dfs(matched[i]) == 1)
 					{
 						matched[i] = num;

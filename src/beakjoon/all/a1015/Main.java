@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * 백준 전체 1015 문제 알고리즘 클래스
@@ -31,16 +33,28 @@ public class Main
 		// 배열의 크기
 		int N = Integer.parseInt(reader.readLine());
 		
-		int[] A = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		int[] B = A.clone();
+		SortedMap<Integer, Integer> sortedMap = new TreeMap<>();
 		
-		Arrays.sort(B);
+		String[] temp = reader.readLine().split(" ");
+		
+		int[][] A = new int[N][3];
+		
+		for (int i = 0; i < N; i++)
+		{
+			A[i][0] = Integer.parseInt(temp[i]);
+			A[i][1] = i;
+		}
+		
+		Arrays.stream(A).sorted(e -> e[1]) l
+		
+		//int[] A = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		//int[] B = A.clone();
 		
 		int[] C = new int[N];
 		
 		for (int i = 0; i < N; i++)
 		{
-			C[i] = A[i]
+		
 		}
 		
 		writer.close();
