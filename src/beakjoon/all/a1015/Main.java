@@ -6,15 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 /**
  * 백준 전체 1015 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/19/A1014/">1015 풀이</a>
- * @since 2021.06.13 Sun 04:34:19
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/22/A1015/">1015 풀이</a>
+ * @since 2021.06.22 Tue 01:23:31
  */
 public class Main
 {
@@ -33,11 +31,15 @@ public class Main
 		// 배열의 크기
 		int N = Integer.parseInt(reader.readLine());
 		
-		SortedMap<Integer, Integer> sortedMap = new TreeMap<>();
+		// 원본 배열
+		int[][] A = new int[N][2];
+		
+		// 정렬 배열
+		int[] B = new int[N];
 		
 		String[] temp = reader.readLine().split(" ");
 		
-		int[][] A = new int[N][3];
+		StringBuilder builder = new StringBuilder();
 		
 		for (int i = 0; i < N; i++)
 		{
@@ -45,19 +47,52 @@ public class Main
 			A[i][1] = i;
 		}
 		
-		Arrays.stream(A).sorted(e -> e[1]) l
-		
-		//int[] A = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		//int[] B = A.clone();
-		
-		int[] C = new int[N];
+		// 정렬 수행
+		sort(A);
 		
 		for (int i = 0; i < N; i++)
 		{
-		
+			int index = A[i][1];
+			
+			B[index] = i;
 		}
+		
+		for (int b : B)
+		{
+			builder.append(b).append(" ");
+		}
+		
+		System.out.println(builder.toString().trim());
 		
 		writer.close();
 		reader.close();
+	}
+	
+	/**
+	 * 정렬 함수
+	 *
+	 * @param A: [int[][]] 대상 배열
+	 */
+	private static void sort(int[][] A)
+	{
+		Arrays.sort(A, (next, current) -> {
+			// 현재값이 더 클 경우
+			if (next[0] < current[0])
+			{
+				return -1;
+			}
+			
+			// 다음값이 더 클 경우
+			else if (next[0] > current[0])
+			{
+				return 1;
+			}
+			
+			// 현재값과 다음값이 같을 경우, 사전순 정렬
+			else
+			{
+				return Integer.compare(next[1], current[1]);
+			}
+		});
 	}
 }
