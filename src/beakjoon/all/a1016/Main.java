@@ -33,12 +33,42 @@ public class Main
 		long min = temp[0];
 		long max = temp[1];
 		
-		long sqrtMin = (long) Math.ceil(Math.sqrt(min));
-		long sqrtMax = (long) Math.floor(Math.sqrt(max));
+		int length = (int) (max - min + 1);
 		
-		System.out.println(max - min + 1 - (sqrtMax - sqrtMin + 1));
+		boolean[] isNotSqrt = new boolean[length];
+		
+		//mesh(min, max, isNotSqrt);
+		writer.write(Integer.toString(mesh(min, max, isNotSqrt)));
+		writer.newLine();
 		
 		writer.close();
 		reader.close();
+	}
+	
+	private static int mesh(long min, long max, boolean[] isNotSqrt)
+	{
+		int size = 0;
+		
+		for (long i = 2; i * i <= max; i++)
+		{
+			long pow = i * i;
+			
+			long start = min % pow == 0 ? min / pow : (min / pow) + 1;
+			
+			for (long j = start; j * pow <= max; j++)
+			{
+				isNotSqrt[(int) (j * pow - min)] = true;
+			}
+		}
+		
+		for (boolean item : isNotSqrt)
+		{
+			if (!item)
+			{
+				size++;
+			}
+		}
+		
+		return size;
 	}
 }
