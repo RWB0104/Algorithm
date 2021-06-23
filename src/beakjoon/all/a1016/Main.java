@@ -11,11 +11,14 @@ import java.util.Arrays;
  * 백준 전체 1016 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/22/A1016/">1016 풀이</a>
- * @since 2021.06.22 Tue 01:48:22
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/23/A1016/">1016 풀이</a>
+ * @since 2021.06.23 Fri 00:22:31
  */
 public class Main
 {
+	private static long min;
+	private static long max;
+	
 	/**
 	 * 메인 함수
 	 *
@@ -30,24 +33,52 @@ public class Main
 		
 		long[] temp = Arrays.stream(reader.readLine().split(" ")).mapToLong(Long::parseLong).toArray();
 		
-		long min = temp[0];
-		long max = temp[1];
+		min = temp[0];
+		max = temp[1];
 		
-		int length = (int) (max - min + 1);
-		
-		boolean[] isNotSqrt = new boolean[length];
-		
-		//mesh(min, max, isNotSqrt);
-		writer.write(Integer.toString(mesh(min, max, isNotSqrt)));
+		writer.write(Integer.toString(solve()));
 		writer.newLine();
 		
 		writer.close();
 		reader.close();
 	}
 	
-	private static int mesh(long min, long max, boolean[] isNotSqrt)
+	/**
+	 * 알고리즘 결과 반환 함수
+	 *
+	 * @return [int] 제곱수로 나누어 떨어지지 않는 수의 갯수
+	 */
+	private static int solve()
 	{
 		int size = 0;
+		
+		boolean[] isNotPow = eratosthenes();
+		
+		for (boolean item : isNotPow)
+		{
+			// 제곱수로 나누어 떨어지지 않는 수일 경우
+			if (!item)
+			{
+				size++;
+			}
+		}
+		
+		return size;
+	}
+	
+	/**
+	 * 에라토스 테네스의 체 배열 반환 함수
+	 *
+	 * true: 제곱ㄴㄴ수가 아닌 수
+	 * false: 제곱ㄴㄴ수
+	 *
+	 * @return [boolean[]] 에라토스 테네스의 체 배열
+	 */
+	private static boolean[] eratosthenes()
+	{
+		int length = (int) (max - min + 1);
+		
+		boolean[] isNotPow = new boolean[length];
 		
 		for (long i = 2; i * i <= max; i++)
 		{
@@ -57,18 +88,11 @@ public class Main
 			
 			for (long j = start; j * pow <= max; j++)
 			{
-				isNotSqrt[(int) (j * pow - min)] = true;
+				// 제곱수의 배수로 나누어 떨어지므로 제곱ㄴㄴ수가 아님
+				isNotPow[(int) (j * pow - min)] = true;
 			}
 		}
 		
-		for (boolean item : isNotSqrt)
-		{
-			if (!item)
-			{
-				size++;
-			}
-		}
-		
-		return size;
+		return isNotPow;
 	}
 }
