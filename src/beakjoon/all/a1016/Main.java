@@ -16,7 +16,10 @@ import java.util.Arrays;
  */
 public class Main
 {
+	// 최소값
 	private static long min;
+	
+	// 최대값
 	private static long max;
 	
 	/**
@@ -68,7 +71,6 @@ public class Main
 	
 	/**
 	 * 에라토스 테네스의 체 배열 반환 함수
-	 *
 	 * true: 제곱ㄴㄴ수가 아닌 수
 	 * false: 제곱ㄴㄴ수
 	 *

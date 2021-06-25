@@ -16,7 +16,22 @@ import java.util.Arrays;
  */
 public class Main
 {
+	private static final boolean[] IS_NOT_PRIME = eratosthenes();
+	
+	// 입력값 갯수
 	private static int N;
+	
+	// 왼쪽 배열 (이분매칭의 기준)
+	private static int[] left;
+	
+	// 오른쪽 배열
+	private static int[] right;
+	
+	private static boolean[][] hasNode;
+	
+	// 방문 여부
+	private static boolean[] isVisit;
+	private static boolean[] isMatch;
 	
 	/**
 	 * 메인 함수
@@ -32,15 +47,77 @@ public class Main
 		
 		N = Integer.parseInt(reader.readLine());
 		
+		// 입력값 배열
 		int[] numbers = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 		
-		int[] odd = Arrays.stream(numbers).filter(value -> value % 2 == 0).toArray();
-		int[] even = Arrays.stream(numbers).filter(value -> value % 2 != 0).toArray();
+		// 첫 번째 수가 홀수일 경우
+		if (numbers[0] % 2 != 0)
+		{
+			// 왼쪽 배열에 홀수를 할당
+			left = Arrays.stream(numbers).filter(value -> value % 2 != 0).toArray();
+			right = Arrays.stream(numbers).filter(value -> value % 2 == 0).toArray();
+		}
 		
-		boolean[] isNotPrime = eratosthenes();
+		// 첫 번째 수가 짝수일 경우
+		else
+		{
+			// 왼쪽 배열에 짝수를 할당
+			left = Arrays.stream(numbers).filter(value -> value % 2 == 0).toArray();
+			right = Arrays.stream(numbers).filter(value -> value % 2 != 0).toArray();
+		}
+		
+		hasNode = new boolean[left.length][right.length];
+		
+		// left[i] + right[j]가 소수일 경우 간선을 잇는다.
+		for (int i = 0; i < left.length; i++)
+		{
+			for (int j = 0; j < right.length; j++)
+			{
+				int ref = left[i] + right[j];
+				
+				// 소수일 경우
+				if (!IS_NOT_PRIME[ref])
+				{
+					// left[i]와 right[j] 사이에 간선 연결
+					hasNode[i][j] = true;
+				}
+			}
+		}
 		
 		writer.close();
 		reader.close();
+	}
+	
+	private static int bipartite()
+	{
+		int size = 0;
+		
+		isVisit = new boolean[left.length];
+		isMatch = new boolean[left.length];
+		
+		for (int i = 0; i < left.length; i++)
+		{
+		
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * DFS 알고리즘 결과 반환 함수
+	 *
+	 * @param num: [int] 시작점
+	 *
+	 * @return [int] 매칭 갯수
+	 */
+	private static int dfs(int num)
+	{
+		for (int i = 0; i < left.length; i++)
+		{
+		
+		}
+		
+		return 0;
 	}
 	
 	/**
@@ -62,7 +139,7 @@ public class Main
 			// 소수일 경우
 			if (!isNotPrime[i])
 			{
-				for (int j = i * i; j < isNotPrime.length; j += i)
+				for (int j = i + i; j < isNotPrime.length; j += i)
 				{
 					// 아직 소수가 아님을 표시하지 않았을 경우
 					if (!isNotPrime[j])
@@ -75,17 +152,5 @@ public class Main
 		}
 		
 		return isNotPrime;
-	}
-	
-	private static int bipartite()
-	{
-		int size = 0;
-		
-		boolean[] isVisit = new boolean[N];
-		
-		for (int i = 0; i < N; i++)
-		{
-		
-		}
 	}
 }
