@@ -6,20 +6,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * 백준 전체 1017 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/22/A1017/">1017 풀이</a>
- * @since 2021.06.22 Tue 01:48:22
+ * @see <a href="https://rwb0104.github.io/posts/2021/06/26/A1017/">1017 풀이</a>
+ * @since 2021.06.26 Sat 03:19:32
  */
 public class Main
 {
+	// 에라토스 테네스의 체 배열 (소수 판별용)
 	private static final boolean[] IS_NOT_PRIME = eratosthenes();
-	
-	// 입력값 갯수
-	private static int N;
 	
 	// 왼쪽 배열 (이분매칭의 기준)
 	private static int[] left;
@@ -27,11 +26,17 @@ public class Main
 	// 오른쪽 배열
 	private static int[] right;
 	
+	// 노드 연결 여부
 	private static boolean[][] hasNode;
 	
 	// 방문 여부
 	private static boolean[] isVisit;
-	private static boolean[] isMatch;
+	
+	// 매칭된 수
+	private static int[] matched;
+	
+	// 현재 선택 중인 수
+	private static int selected;
 	
 	/**
 	 * 메인 함수
@@ -45,7 +50,8 @@ public class Main
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		N = Integer.parseInt(reader.readLine());
+		// 입력값 갯수
+		int N = Integer.parseInt(reader.readLine());
 		
 		// 입력값 배열
 		int[] numbers = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
@@ -66,41 +72,107 @@ public class Main
 			right = Arrays.stream(numbers).filter(value -> value % 2 != 0).toArray();
 		}
 		
-		hasNode = new boolean[left.length][right.length];
-		
-		// left[i] + right[j]가 소수일 경우 간선을 잇는다.
-		for (int i = 0; i < left.length; i++)
+		// 홀수 배열과 짝수 배열의 수가 동일할 경우 (이분매칭 가능)
+		if (left.length == right.length)
 		{
-			for (int j = 0; j < right.length; j++)
+			hasNode = new boolean[left.length][right.length];
+			
+			// left의 첫 번째 행은 기준 매칭이므로 이분 매칭에서 제외한다.
+			for (int i = 1; i < left.length; i++)
 			{
-				int ref = left[i] + right[j];
-				
-				// 소수일 경우
-				if (!IS_NOT_PRIME[ref])
+				for (int j = 0; j < right.length; j++)
 				{
-					// left[i]와 right[j] 사이에 간선 연결
-					hasNode[i][j] = true;
+					int ref = left[i] + right[j];
+					
+					// left[i] + right[j]의 값이 소수일 경우
+					if (!IS_NOT_PRIME[ref])
+					{
+						// 노드를 연결한다.
+						hasNode[i][j] = true;
+					}
 				}
+			}
+			
+			LinkedList<Integer> list = new LinkedList<>();
+			
+			// 첫 번째 수와 상대 그룹의 요소를 하나씩 매칭해본다.
+			for (int i = 0; i < N / 2; i++)
+			{
+				// left[0]와 right[i]의 합이 소수일 경우
+				if (!IS_NOT_PRIME[left[0] + right[i]])
+				{
+					selected = i;
+					
+					int size = bipartite();
+					
+					// 모든 요소가 매칭될 경우
+					if (size == N / 2)
+					{
+						list.add(right[selected]);
+					}
+				}
+			}
+			
+			// 하나도 매칭되지 않은 경우
+			if (list.size() == 0)
+			{
+				writer.write("-1");
+			}
+			
+			// 매칭이 하나 이상 있을 경우
+			else
+			{
+				// 오름차순으로 정렬
+				list.sort(Integer::compareTo);
+				
+				StringBuilder builder = new StringBuilder();
+				
+				for (int item : list)
+				{
+					builder.append(item).append(" ");
+				}
+				
+				writer.write(builder.toString().trim());
 			}
 		}
 		
+		// 홀수 배열과 짝수 배열의 수가 동일하지 않을 경우 (이분매칭 불가능)
+		else
+		{
+			writer.write("-1");
+		}
+		
+		writer.newLine();
 		writer.close();
 		reader.close();
 	}
 	
+	/**
+	 * 이분 매칭 갯수 반환 함수
+	 *
+	 * @return [int] 이분 매칭 갯수
+	 */
 	private static int bipartite()
 	{
-		int size = 0;
+		// 이미 left[0]과 right 요소 하나가 선택됨
+		int size = 1;
 		
-		isVisit = new boolean[left.length];
-		isMatch = new boolean[left.length];
+		matched = new int[left.length];
 		
-		for (int i = 0; i < left.length; i++)
+		Arrays.fill(matched, -1);
+		
+		for (int i = 1; i < left.length; i++)
 		{
-		
+			isVisit = new boolean[left.length];
+			
+			// 매칭 가능할 경우
+			if (dfs(i))
+			{
+				size++;
+			}
 		}
 		
-		return 0;
+		return size;
 	}
 	
 	/**
@@ -110,14 +182,30 @@ public class Main
 	 *
 	 * @return [int] 매칭 갯수
 	 */
-	private static int dfs(int num)
+	private static boolean dfs(int num)
 	{
-		for (int i = 0; i < left.length; i++)
+		// 첫 방문일 경우
+		if (!isVisit[num])
 		{
-		
+			isVisit[num] = true;
+			
+			for (int i = 0; i < right.length; i++)
+			{
+				// 연결된 노드가 있으며, 첫 번째 숫자와 매칭된 숫자가 아니며, 소수일 경우
+				if (hasNode[num][i] && i != selected && !IS_NOT_PRIME[left[num] + right[i]])
+				{
+					// 매칭이 아직 되지 않았거나, 매칭된 숫자가 다른 숫자와 매칭될 수 있을 경우
+					if (matched[i] == -1 || dfs(matched[i]))
+					{
+						matched[i] = num;
+						
+						return true;
+					}
+				}
+			}
 		}
 		
-		return 0;
+		return false;
 	}
 	
 	/**
