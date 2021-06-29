@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
 /**
- * 백준 전체 1017 문제 알고리즘 클래스
+ * 백준 전체 1018 문제 알고리즘 클래스
  *
  * @author RWB
  * @see <a href="https://rwb0104.github.io/posts/2021/06/26/A1018/">1018 풀이</a>
@@ -17,28 +17,10 @@ import java.util.Arrays;
 public class Main
 {
 	// 상단 좌측이 하얀색으로 시작하는 체스판
-	private static final boolean[][] WHITE = {
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-	};
+	private static final boolean[][] WHITE = { { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, };
 	
 	// 상단 좌측이 검은색으로 시작하는 체스판
-	private static final boolean[][] BLACK = {
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-			{ false, true, false, true, false, true, false, true },
-			{ true, false, true, false, true, false, true, false },
-	};
+	private static final boolean[][] BLACK = { { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, { false, true, false, true, false, true, false, true }, { true, false, true, false, true, false, true, false }, };
 	
 	// 체스판
 	private static boolean[][] board;

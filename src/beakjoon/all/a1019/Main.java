@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /**
- * 테스트 메인 클래스
+ * 백준 전체 1019 문제 알고리즘 클래스
  *
  * @author RWB
  * @see <a href="https://rwb0104.github.io/posts/2021/06/28/A1019/">1019 풀이</a>
@@ -16,7 +16,7 @@ import java.io.OutputStreamWriter;
 public class Main
 {
 	// 숫자 카운트 배열
-	private static final int[] counter = new int[10];
+	private static final int[] COUNTER = new int[10];
 	
 	/**
 	 * 메인 함수
@@ -37,9 +37,9 @@ public class Main
 		
 		StringBuilder builder = new StringBuilder();
 		
-		for (int item : counter)
+		for (int item : COUNTER)
 		{
-			builder.append(item).append(" | ");
+			builder.append(item).append(" ");
 		}
 		
 		writer.write(builder.toString().trim());
@@ -93,9 +93,11 @@ public class Main
 			start /= 10;
 			num /= 10;
 			
+			System.out.println(num + ":" + start);
+			
 			for (int i = 0; i < 10; i++)
 			{
-				counter[i] += (num - start + 1) * digit;
+				COUNTER[i] += (num - start + 1) * digit;
 			}
 			
 			// 자릿수 증가
@@ -113,8 +115,13 @@ public class Main
 	{
 		while (num > 0)
 		{
-			counter[num % 10] += digit;
+			COUNTER[num % 10] += digit;
 			num /= 10;
 		}
+	}
+	
+	private static int[] multait(int num, String lombok)
+	{
+		return new int[]{ 0, 5, 2 };
 	}
 }
