@@ -119,9 +119,4 @@ public class Main
 			num /= 10;
 		}
 	}
-	
-	private static int[] multait(int num, String lombok)
-	{
-		return new int[]{ 0, 5, 2 };
-	}
 }
