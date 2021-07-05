@@ -41,14 +41,12 @@ public class Main
 		// 표시된 숫자
 		int[] numbers = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
 		
+		int target = Arrays.stream(numbers).reduce(0, (left, right) -> left += FLAG[right]);
+		
 		// 숫자 자릿수
 		int N = numbers.length;
 		
 		dp = new long[N + 1][(N * 7) + 1];
-		
-		// 숫자의 선분 갯수
-		int count = Arrays.stream(numbers).reduce(0, (left, right) -> left += FLAG[right]);
-		int acc = 0;
 		
 		for (long[] arr : dp)
 		{
@@ -58,19 +56,12 @@ public class Main
 		
 		// 초기값 설정
 		dp[0][0] = 0;
-		dp[1][2] = 1;
-		dp[1][3] = 7;
-		dp[1][4] = 4;
-		dp[1][5] = 2;
-		dp[1][6] = 0;
-		dp[1][7] = 8;
 		
-		/*
+		// 초기값 설정
 		for (int i = 0; i < 10; i++)
 		{
 			dp[1][FLAG[i]] = Math.min(dp[1][FLAG[i]], i);
 		}
-		*/
 		
 		for (int i = 2; i < dp.length; i++)
 		{
@@ -78,6 +69,7 @@ public class Main
 			{
 				for (int j = 0; j < dp[i].length; j++)
 				{
+					// 초기값이 아닌 유효한 값을 가질 경우
 					if (dp[i - 1][j] != Long.MAX_VALUE)
 					{
 						dp[i][j + FLAG[num]] = Math.min(dp[i][j + FLAG[num]], dp[i - 1][j] + (long) Math.pow(10, i - 1) * num);
@@ -86,23 +78,47 @@ public class Main
 			}
 		}
 		
-		acc += FLAG[numbers[N - 1]];
+		// 결과
+		long result = (long) Math.pow(10, N);
 		
+		// 1의 자리 숫자만 비교
 		for (int num = 0; num < 10; num++)
 		{
+			// 1의 자리 숫자와 num의 선분 갯수가 동일하며, 1의 자리 숫자와 num이 같지 않을 경우
 			if (FLAG[numbers[N - 1]] == FLAG[num] && numbers[N - 1] != num)
 			{
-			
+				// num이 1의 자리 숫자보다 클 경우
+				if (num > numbers[N - 1])
+				{
+					result = Math.min(result, num - numbers[N - 1]);
+				}
+				
+				// num이 1의 자리 숫자보다 작을 경우
+				else
+				{
+					result = Math.min(result, num - numbers[N - 1] + (long) Math.pow(10, N));
+				}
 			}
 		}
 		
-		for (int i = 2; i <= N; i++)
+		int count = FLAG[numbers[N - 1]];
+		
+		// 10의 자리 숫자부터 하나씩 비교
+		for (int i = 2; i < N + 1; i++)
 		{
+			count += FLAG[numbers[N - i]];
 			for (int num = 0; num < 10; num++)
 			{
-				System.out.println();
+				if (target - count + FLAG[num] == count - FLAG[num])
+				{
+					
+					
+					result = Math.min(result, dp[i - 1][count - FLAG[num]]);
+				}
 			}
 		}
+		
+		writer.write(String.valueOf(result));
 		
 		writer.close();
 		reader.close();
