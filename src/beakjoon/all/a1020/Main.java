@@ -33,7 +33,8 @@ public class Main
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		String input = reader.readLine();
+		//String input = reader.readLine();
+		String input = "7788";
 		
 		long number = Long.parseLong(input);
 		
@@ -47,7 +48,7 @@ public class Main
 		
 		// 숫자의 선분 갯수
 		int count = Arrays.stream(numbers).reduce(0, (left, right) -> left += FLAG[right]);
-		int acc = count;
+		int acc = 0;
 		
 		for (long[] arr : dp)
 		{
@@ -79,29 +80,28 @@ public class Main
 				{
 					if (dp[i - 1][j] != Long.MAX_VALUE)
 					{
-						if (dp[i - 1][j] + (long) Math.pow(10, i - 1) * num != number % (long) Math.pow(10, i))
-						{
-							dp[i][j + FLAG[num]] = Math.min(dp[i][j + FLAG[num]], dp[i - 1][j] + (long) Math.pow(10, i - 1) * num);
-						}
+						dp[i][j + FLAG[num]] = Math.min(dp[i][j + FLAG[num]], dp[i - 1][j] + (long) Math.pow(10, i - 1) * num);
 					}
 				}
 			}
 		}
 		
-		for (long[] a : dp)
+		acc += FLAG[numbers[N - 1]];
+		
+		for (int num = 0; num < 10; num++)
 		{
-			for (long b : a)
+			if (FLAG[numbers[N - 1]] == FLAG[num] && numbers[N - 1] != num)
 			{
-				System.out.println(b);
-			}
 			
-			System.out.println();
+			}
 		}
 		
-		for (int i = 1; i < dp.length; i++)
+		for (int i = 2; i <= N; i++)
 		{
-			// 오른쪽에서부터 한자리씩 제외한 나머지 선분의 수
-			acc -= FLAG[numbers[N - i]];
+			for (int num = 0; num < 10; num++)
+			{
+				System.out.println();
+			}
 		}
 		
 		writer.close();
