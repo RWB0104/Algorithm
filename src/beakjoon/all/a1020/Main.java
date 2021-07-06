@@ -58,6 +58,7 @@ public class Main
 		
 		writer.write(String.valueOf(result));
 		writer.newLine();
+		writer.flush();
 		
 		writer.close();
 		reader.close();
