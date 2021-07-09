@@ -45,7 +45,7 @@ public class Main
 		
 		for (int i = 0; i < N; i++)
 		{
-			
+		
 		}
 		
 		// 큐의 크기
