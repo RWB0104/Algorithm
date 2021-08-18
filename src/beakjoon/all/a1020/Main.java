@@ -54,9 +54,9 @@ public class Main
 		
 		putDP();
 		
-		//long result = solve();
+		long result = solve();
 		
-		//writer.write(String.valueOf(result));
+		writer.write(String.valueOf(result));
 		writer.newLine();
 		writer.flush();
 		

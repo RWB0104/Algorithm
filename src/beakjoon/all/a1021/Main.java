@@ -12,18 +12,16 @@ import java.util.LinkedList;
  * 백준 전체 1021 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/06/A1021/">1021 풀이</a>
- * @since 2021.07.06 11:36:34
+ * @see <a href="https://rwb0104.github.io/posts/2021/07/14/A1021/">1021 풀이</a>
+ * @since 2021.07.14 12:57:01
  */
 public class Main
 {
-	private static int N;
-	
+	// 뽑을 수의 갯수
 	private static int M;
 	
-	private static LinkedList<Integer> queue = new LinkedList<>();
-	
-	private static LinkedList<Integer> sorted;
+	// 큐
+	private static final LinkedList<Integer> QUEUE = new LinkedList<>();
 	
 	/**
 	 * 메인 함수
@@ -41,22 +39,70 @@ public class Main
 		int[] meta = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 		
 		// 수의 위치
-		String[] line = reader.readLine().split(" ");
-		
-		for (int i = 0; i < N; i++)
-		{
-		
-		}
+		int[] position = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 		
 		// 큐의 크기
-		N = meta[0];
+		int N = meta[0];
 		
-		// 수의 갯수
 		M = meta[1];
 		
+		// 큐의 크기만큼 큐 초기화
+		for (int i = 0; i < N; i++)
+		{
+			QUEUE.add(i + 1);
+		}
+		
+		writer.write(String.valueOf(solve(position)));
 		writer.newLine();
 		
 		writer.close();
 		reader.close();
+	}
+	
+	/**
+	 * 큐 연산 갯수 반환 함수
+	 *
+	 * @param position: [int[]] 수의 위치 배열
+	 *
+	 * @return [int] 연산 갯수
+	 */
+	private static int solve(int[] position)
+	{
+		int count = 0;
+		
+		for (int i = 0; i < M; i++)
+		{
+			// 뽑을 요소의 인덱스
+			int target = QUEUE.indexOf(position[i]);
+			
+			// 구간 구분 기준
+			int ref = QUEUE.size() / 2;
+			
+			// 오른쪽으로 이동하는 게 더 빠를 경우
+			if (target > ref)
+			{
+				while (position[i] != QUEUE.getFirst())
+				{
+					// 맨 끝 요소를 제거하고 맨 앞에 추가
+					QUEUE.addFirst(QUEUE.removeLast());
+					count++;
+				}
+			}
+			
+			// 왼쪽으로 이동하는 게 더 빠를 경우
+			else
+			{
+				while (position[i] != QUEUE.getFirst())
+				{
+					// 맨 앞 요소를 제거하거 맨 끝에 추가
+					QUEUE.addLast(QUEUE.removeFirst());
+					count++;
+				}
+			}
+			
+			QUEUE.removeFirst();
+		}
+		
+		return count;
 	}
 }
