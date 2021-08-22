@@ -78,23 +78,22 @@ public class Main
 		}
 		
 		// 초기값 설정
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < FLAG.length; i++)
 		{
 			dp[1][FLAG[i]] = Math.min(dp[1][FLAG[i]], i);
 		}
 		
 		// 배열 채우기
-		for (int i = 2; i < dp.length; i++)
+		for (int n = 2; n < dp.length; n++)
 		{
-			for (int num = 0; num < 10; num++)
+			for (int i = 2; i < 8; i++)
 			{
-				for (int j = 0; j < dp[i].length; j++)
+				int start = (n - 1) * 2;
+				int end = (n - 1) * 7 + 1;
+				
+				for (int j = start; j < end; j++)
 				{
-					// 초기값이 아닌 유효한 값을 가질 경우
-					if (dp[i - 1][j] != Long.MAX_VALUE)
-					{
-						dp[i][j + FLAG[num]] = Math.min(dp[i][j + FLAG[num]], dp[i - 1][j] + (long) Math.pow(10, i - 1) * num);
-					}
+					dp[n][i + j] = Math.min(dp[n][i + j], dp[n - 1][j] + (long) Math.pow(10, n - 1) * dp[1][i]);
 				}
 			}
 		}
@@ -116,11 +115,11 @@ public class Main
 			// 입력된 숫자의 1의 자리값
 			int units = numbers[N - 1];
 			
-			// 1의 자리 숫자와 num의 선분 갯수가 동일하며, 서로 동일하지 않을 경우
+			// 1의 자리 숫자와 다른 숫자이면서 선분의 갯수는 동일할 경우
 			if (FLAG[units] == FLAG[num] && units != num)
 			{
 				// num이 1의 자리 숫자보다 클 경우
-				if (num > numbers[N - 1])
+				if (num > units)
 				{
 					result = Math.min(result, num - units);
 				}
