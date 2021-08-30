@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 백준 전체 1002 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/05/21/A1002/">1002 풀이</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/05/21/a1002">1002 풀이</a>
  * @since 2021.04.21 Wed 21:56:10
  */
 public class Main
@@ -38,7 +38,7 @@ public class Main
 	
 	/**
 	 * 접점 갯수 반환 함수
-	 * <p>
+	 *
 	 * case 1 - 두 원이 정확히 겹칠 경우 (-1)
 	 * case 2 - 두 원이 서로 겹치면서 인접하지 않는 경우 (0)
 	 * case 3 - 두 원이 서로 겹치지 않으면서 인접하지 않는 경우 (0)

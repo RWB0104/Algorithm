@@ -12,7 +12,7 @@ import java.util.HashMap;
  * 누구나 자료 구조와 알고리즘 해시 테이블을 적용한 전자 투표 기계 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/29/about-algorithm-chapter07/">해시 테이블로 매우 빠른 룩업</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/29/about-algorithm-chapter07">해시 테이블로 매우 빠른 룩업</a>
  * @since 2021.07.29 Thu 22:27:23
  */
 public class HashVote

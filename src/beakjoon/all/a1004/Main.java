@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 백준 전체 1004 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/05/22/A1004/">1004 풀이</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/05/22/a1004">1004 풀이</a>
  * @since 2021.04.24 Sat 02:15:31
  */
 public class Main

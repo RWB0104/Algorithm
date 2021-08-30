@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 누구나 자료 구조와 알고리즘 버블 정렬 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/16/about-algorithm-chapter04/">빅 오로 코드 속도 올리기</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/16/about-algorithm-chapter04">빅 오로 코드 속도 올리기</a>
  * @since 2021.07.16 Fri 19:11:19
  */
 public class BubbleSort
@@ -108,6 +108,6 @@ public class BubbleSort
 			index--;
 		}
 		
-		return new int[] { compareCount, swapCount };
+		return new int[]{ compareCount, swapCount };
 	}
 }

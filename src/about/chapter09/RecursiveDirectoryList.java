@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 누구나 자료 구조와 알고리즘 재귀 폴더 리스트 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/08/04/about-algorithm-chapter09/">재귀를 사용한 재귀적 반복</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/08/04/about-algorithm-chapter09">재귀를 사용한 재귀적 반복</a>
  * @since 2021.08.03 Tue 23:36:43
  */
 public class RecursiveDirectoryList

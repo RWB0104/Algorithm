@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 백준 전체 1005 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/01/A1005/">1005 풀이</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/06/01/a1005">1005 풀이</a>
  * @since 2021.05.31 Mon 19:11:58
  */
 public class Main

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 누구나 자료 구조와 알고리즘 배열 삽입 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/09/about-algorithm-chapter01/">자료구조가 중요한 까닭</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/10/about-algorithm-chapter01">자료구조가 중요한 까닭</a>
  * @since 2021.07.10 Sat 00:27:47
  */
 public class ArrayInsert

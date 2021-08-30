@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 누구나 자료 구조와 알고리즘 선택 정렬 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/23/about-algorithm-chapter05/">빅 오를 사용하거나 사용하지 않는 코드 최적화</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/23/about-algorithm-chapter05">빅 오를 사용하거나 사용하지 않는 코드 최적화</a>
  * @since 2021.07.23 Fri 01:12:20
  */
 public class SelectionSort
@@ -99,6 +99,6 @@ public class SelectionSort
 			}
 		}
 		
-		return new int[] { compareCount, swapCount };
+		return new int[]{ compareCount, swapCount };
 	}
 }

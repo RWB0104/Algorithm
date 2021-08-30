@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
  * 백준 전체 1019 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/06/28/A1019/">1019 풀이</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/06/28/a1019">1019 풀이</a>
  * @since 2021.06.28 Mon 12:28:50
  */
 public class Main
@@ -92,8 +92,6 @@ public class Main
 			
 			start /= 10;
 			num /= 10;
-			
-			System.out.println(num + ":" + start);
 			
 			for (int i = 0; i < 10; i++)
 			{

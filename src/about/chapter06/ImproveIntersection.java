@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 누구나 자료 구조와 알고리즘 향상된 교집합 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/24/about-algorithm-chapter06/">긍정적인 시나리오 최적화</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/24/about-algorithm-chapter06">긍정적인 시나리오 최적화</a>
  * @since 2021.07.24 Sat 04:21:40
  */
 public class ImproveIntersection

@@ -13,7 +13,7 @@ import java.util.Queue;
  * 누구나 자료 구조와 알고리즘 큐 프린터 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/31/about-algorithm-chapter08/">스택과 큐로 간결한 코드 생성</a>
+ * @see <a href="https://blog.itcode.dev/posts/2021/07/31/about-algorithm-chapter08">스택과 큐로 간결한 코드 생성</a>
  * @since 2021.07.31 Sat 03:21:35
  */
 public class Printer
