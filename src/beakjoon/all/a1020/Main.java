@@ -11,8 +11,8 @@ import java.util.Arrays;
  * 백준 전체 1020 문제 알고리즘 클래스
  *
  * @author RWB
- * @see <a href="https://rwb0104.github.io/posts/2021/07/06/A1020/">1020 풀이</a>
- * @since 2021.07.06 11:36:34
+ * @see <a href="https://blog.itcode.dev/posts/2021/08/24/a1020">1020 풀이</a>
+ * @since 2021.08.23 22:53:10
  */
 public class Main
 {
@@ -135,26 +135,26 @@ public class Main
 		// 비교할 선분의 갯수 (1의 자리를 위에서 이미 비교했으므로 1의 자리에 해당하는 선분값을 초기값으로 지정)
 		int count = FLAG[numbers[N - 1]];
 		
-		// (10^i)의 자리 숫자부터 하나씩 비교
-		for (int i = 2; i < N + 1; i++)
+		// (10^n)의 자리 숫자부터 하나씩 비교
+		for (int n = 2; n < N + 1; n++)
 		{
-			// (10^i-1)의 자리까지만 표기한 수
-			long digit = number % (long) Math.pow(10, i);
+			// (10^n-1)의 자리까지만 표기한 수
+			long digit = number % (long) Math.pow(10, n);
 			
-			// (10^i)의 자릿수 선분 갯수 누적
-			count += FLAG[numbers[N - i]];
+			// (10^n)의 자릿수 선분 갯수 누적
+			count += FLAG[numbers[N - n]];
 			
-			// (10^i)의 자릿수에 0 ~ 9를 대입하여 비교
+			// (10^n)의 자릿수에 0 ~ 9를 대입하여 비교
 			for (int num = 0; num < 10; num++)
 			{
 				// 비교할 선분의 갯수와 현재 숫자의 선분의 갯수차가 양수일 경우
-				if (count - FLAG[num] >= 0)
+				if (count - FLAG[num] >= (n - 1) * 2)
 				{
-					// (10^i-1)의 자릿수에 현재 숫자를 곱한 수
-					long pows = (long) Math.pow(10, i - 1) * num;
+					// (10^n-1)의 자릿수에 현재 숫자를 곱한 수
+					long pows = (long) Math.pow(10, n - 1) * num;
 					
-					// i-1 자리에서 선분의 합이 (count - FLAG[num])이 되는 가장 작은 수
-					long target = dp[i - 1][count - FLAG[num]];
+					// n-1 자리에서 선분의 합이 (count - FLAG[num])이 되는 가장 작은 수
+					long target = dp[n - 1][count - FLAG[num]];
 					
 					// pows와 target의 합이 digit과 다르며, 유효한 값을 가지는 메모이제이션 배열일 경우
 					if (digit != pows + target && target != Long.MAX_VALUE)
