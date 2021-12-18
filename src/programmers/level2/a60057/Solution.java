@@ -17,12 +17,11 @@ class Solution
 	 */
 	public int solution(String s)
 	{
-		for (int i = 1; i < s.length(); i++)
+		for (int i = 1; i <= s.length()/ 2; i++)
 		{
-			System.out.println(s.replaceAll(s.substring(0, i), ""));
+			System.out.println(s.substring(0, i));
 		}
-		
-		
+
 		return 1;
 	}
 }

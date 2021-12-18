@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * 자연수 뒤집어 배열로 만들기 클래스
+ * 정수 내림차순으로 배치하기 클래스
  *
  * @author RWB
  * @since 2021.12.13 Mon 19:04:28

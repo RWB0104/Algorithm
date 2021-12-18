@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dded6f9-736d-47bd-be33-024907419039" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1dded6f9-736d-47bd-be33-024907419039" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/programmers/level1/a59039/solution.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/programmers/level1/a59039/solution.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/programmers/level1/a12926/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/programmers/level1/a12926/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/programmers/level1/a12933/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/programmers/level1/a12933/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/programmers/level2/a60057/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/programmers/level2/a60057/Solution.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/programmers/level2/a60057" />
-    <property name="project.structure.last.edited" value="프로젝트" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -65,13 +66,13 @@
       <recent name="programmers.level1.a72410" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.Test (1)">
-    <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="programmers.level1.a12969.Solution" />
+  <component name="RunManager" selected="Application.Test (3)">
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="programmers.level2.a60057.Test" />
       <module name="Algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="programmers.level1.a12969.*" />
+          <option name="PATTERN" value="programmers.level2.a60057.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,12 +80,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="programmers.level2.a60057.Test" />
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="programmers.level1.a1845.Test" />
       <module name="Algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="programmers.level2.a60057.*" />
+          <option name="PATTERN" value="programmers.level1.a1845.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,11 +134,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.Test (1)" />
-        <item itemvalue="애플리케이션.Test" />
-        <item itemvalue="애플리케이션.Solution" />
-        <item itemvalue="애플리케이션.Test (4)" />
-        <item itemvalue="애플리케이션.Test (3)" />
+        <item itemvalue="Application.Test (3)" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Test (2)" />
       </list>
     </recent_temporary>
   </component>
