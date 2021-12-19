@@ -18,5 +18,9 @@ public class Test
 		Solution solution = new Solution();
 		
 		System.out.println(solution.solution("aabbaccc"));
+		System.out.println(solution.solution("ababcdcdababcdcd"));
+		System.out.println(solution.solution("abcabcdede"));
+		System.out.println(solution.solution("abcabcabcabcdededededede"));
+		System.out.println(solution.solution("xababcdcdababcdcd"));
 	}
 }
